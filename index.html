@@ -26,6 +26,18 @@
   <script>
     vkBridge.send("VKWebAppInit", {});
 
+    vkBridge.send('VKWebAppShowBannerAd', {
+      banner_location: 'bottom',
+      can_close: false
+    }).then((data) => { 
+      if (data.result) {
+        // Баннерная реклама отобразилась
+      }
+    }).catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+
     vkBridge.subscribe((e) => {
       if (e.detail.type === 'VKWebAppViewHide') {
         // Действия при переключении из игры или мини приложения
